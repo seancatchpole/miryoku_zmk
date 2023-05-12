@@ -13,4 +13,4 @@ jobs:
       alphas: '["QWERTY"]'
       nav: '["invertedT"]'
       custom_config: '["CONFIG_BT_CTLR_TX_PWR_PLUS_8=y"]'
-      branches: '["zmkfirmware/zmk/main seancatchpole/zmk/main"]'
+      branches: '["seancatchpole/zmk/main"]'
