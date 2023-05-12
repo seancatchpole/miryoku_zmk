@@ -12,5 +12,5 @@ jobs:
       shield: '["corne_left nice_view_adapter nice_view","corne_right nice_view_adapter nice_view"]'
       alphas: '["QWERTY"]'
       nav: '["invertedT"]'
-      custom_config: '["CONFIG_BT_CTLR_TX_PWR_PLUS_8=yn\CONFIG_ZMK_DISPLAY_WORK_QUEUE_DEDICATED=y"]'
+      custom_config: '["CONFIG_BT_CTLR_TX_PWR_PLUS_8=y\nCONFIG_ZMK_DISPLAY_WORK_QUEUE_DEDICATED=y"]'
       branches: '["seancatchpole/zmk/main"]'
