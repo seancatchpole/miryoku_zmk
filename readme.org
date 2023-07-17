@@ -532,7 +532,7 @@ For [[#workflow-builds][workflow builds]] using the [[#build-inputs][Build Input
 
 For [[#local-builds][local builds]] first merge https://github.com/zmkfirmware/zmk/pull/1318. Add ~#define MIRYOKU_KLUDGE_TAPDELAY~ to the config file. Build with board ~native_posix_64~.
 
-For [[#workflow-builds][workflow builds]] using the [[#build-inputs][Build Inputs]] workflow, use ~native_posix_64~ with the ~board~ option, ~#define MIRYOKU_KLUDGE_TAPDELAY~ with the ~custom_config~ option, and ~zmkfirmware/zmk/main petejohanson/zmk/shell/tap-command~ with the ~branches~ option. For workflow builds using [[#build-examples][Build Example]] workflows, see the [[.github/workflows/build-example-xmk-native_posix_64.yml][Build Example 𝑥MK native_posix_64]] workflow.
+For [[#workflow-builds][workflow builds]] using the [[#build-inputs][Build Inputs]] workflow, use ~native_posix_64~ with the ~board~ option, ~#define MIRYOKU_KLUDGE_TAPDELAY~ with the ~custom_config~ option, and ~zmkfirmware/zmk/main petejohanson/zmk/shell/tap-command~ with the ~branches~ option. For workflow builds using [[#build-examples][Build Example]] workflows, see the [[.github/workflows/build-example-xmk-native_posix_64.yml][Build Example 𝑥MK native_posix_64]] workfloow.
 
 
 ** Issues
