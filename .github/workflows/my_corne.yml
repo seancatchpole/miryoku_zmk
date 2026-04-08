@@ -13,4 +13,4 @@ jobs:
       alphas: '["QWERTY"]'
       nav: '["invertedT"]'
       kconfig: '["CONFIG_BT_CTLR_TX_PWR_PLUS_8=y\nCONFIG_ZMK_DISPLAY_WORK_QUEUE_DEDICATED=y"]'
-      branches: '["seancatchpole/zmk/main"]'
+      branches: '["zmkfirmware/zmk/v0.3-branch"]'
