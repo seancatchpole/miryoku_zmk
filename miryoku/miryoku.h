@@ -23,6 +23,12 @@
 #define U_NA &none // present but not available for use
 #define U_NU &none // available but not used
 
+#if defined (MIRYOKU_ZMK_STUDIO)
+  #define U_STUDIO_UNLOCK &studio_unlock
+#else
+  #define U_STUDIO_UNLOCK U_NA
+#endif
+
 #define U_TAPPING_TERM 200
 
 #include "miryoku_clipboard.h"

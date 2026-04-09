@@ -35,6 +35,9 @@ on:
       custom_config:
         type: string
         default: '["default"]'
+      snippet:
+        type: string
+        default: '["default"]'
       kconfig:
         type: string
         default: '["default"]'
@@ -64,6 +67,7 @@ jobs:
         layers: ${{ fromJSON(inputs.layers) }}
         mapping: ${{ fromJSON(inputs.mapping) }}
         custom_config: ${{ fromJSON(inputs.custom_config) }}
+        snippet: ${{ fromJSON(inputs.snippet) }}
         kconfig: ${{ fromJSON(inputs.kconfig) }}
         branches: ${{ fromJSON(inputs.branches) }}
         modules: ${{ fromJSON(inputs.modules) }}
@@ -116,6 +120,13 @@ jobs:
           then
             echo "${{ matrix.custom_config }}" >> "$configfile"
             run_name="$run_name config_"`echo "${{ matrix.custom_config }}" | md5sum | head -c "$hash_length"`
+          fi
+
+          if [ -n "${{ matrix.snippet }}" -a "${{ matrix.snippet }}" != 'default' ]
+          then
+            snippet_arg="-S ${{ matrix.snippet }}"
+            echo "snippet_arg=$snippet_arg" >> $GITHUB_OUTPUT
+            run_name="$run_name snippet_"`echo "${{ matrix.snippet }}" | md5sum | head -c "$hash_length"`
           fi
 
           for option in "alphas_${{ matrix.alphas }}" "extra_${{ matrix.extra }}" "tap_${{ matrix.tap }}" "nav_${{ matrix.nav }}" "clipboard_${{ matrix.clipboard }}" "layers_${{ matrix.layers }}" "mapping_${{ matrix.mapping }}"
@@ -173,6 +184,7 @@ jobs:
           layers: '${{ matrix.layers }}'
           mapping: '${{ matrix.mapping }}'
           custom_config: '${{ matrix.custom_config }}'
+          snippet: '${{ matrix.snippet }}'
           kconfig: '${{ matrix.kconfig }}'
           branches: '${{ matrix.branches }}'  
           modules: '${{ matrix.modules }}'
@@ -326,7 +338,7 @@ jobs:
           EX_DATAERR='65'
           cd "${GITHUB_WORKSPACE}/zmk/app"
           {
-            west $west_debug build -b ${{ matrix.board }} $west_build_debug -- ${{ steps.main.outputs.shield_arg }} ${{ steps.main.outputs.modules_arg }} -DZMK_CONFIG="${GITHUB_WORKSPACE}/miryoku_zmk/config" ||
+            west $west_debug build -b ${{ matrix.board }} $west_build_debug ${{ steps.main.outputs.snippet_arg }} -- ${{ steps.main.outputs.shield_arg }} ${{ steps.main.outputs.modules_arg }} -DZMK_CONFIG="${GITHUB_WORKSPACE}/miryoku_zmk/config" ||
             echo "$build_failed_message $?." ;
           } 2>&1 | tee "$log"
           if grep -q 'Invalid BOARD; see above.' "$log"
@@ -372,4 +384,3 @@ jobs:
         with:
           name: ${{ steps.main.outputs.run_name }}
           path: ${{ steps.main.outputs.artifact_dir }}
-
