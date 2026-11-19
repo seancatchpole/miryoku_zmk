@@ -8,9 +8,9 @@ jobs:
     uses: ./.github/workflows/main.yml
     secrets: inherit
     with:
-      board: '["nice_nano_v2"]'
+      board: '["nice_nano@2.0.0//zmk"]'
       shield: '["corne_left nice_view_adapter nice_view","corne_right nice_view_adapter nice_view"]'
       alphas: '["QWERTY"]'
       nav: '["invertedT"]'
       kconfig: '["CONFIG_BT_MAX_CONN=6\nCONFIG_BT_MAX_PAIRED=6\nCONFIG_BT_CTLR_TX_PWR_PLUS_8=y\nCONFIG_ZMK_DISPLAY_WORK_QUEUE_DEDICATED=y"]'
-      branches: '["zmkfirmware/zmk/v0.3-branch"]'
+      branches: '["seancatchpole/zmk/main"]'
